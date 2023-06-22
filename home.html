@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Kumaran's website
+    </title>
+    <style>
+        td {
+            vertical-align: top;
+        }
+        table {
+            border :1px solid red;
+            border-collapse: collapse;
+            width:100%;
+        }
+    .header  {
+        border:1px solid red;
+        height:70px;
+    }
+    .menu {
+        border:1px solid red;
+        height:40px;
+        background-color:black;
+    }
+    .content td {
+        border:1px solid red;
+        height:calc(100vh - 160px);
+
+    }
+
+    .menu td a {
+        padding:5px;
+        text-decoration: none;
+        color:white;
+        text-transform: uppercase;
+    }
+    .menu td {
+        vertical-align: middle;
+        
+    }
+    </style>
+</head>
+
+<body>
+  <!--  <a href="home.html"></a>-->
+    <table>
+        <tr class="header">
+            <td>
+                <h1 align="center">Kumaran's Website</h1>
+            </td>
+        </tr>
+
+        <tr class="menu">
+            <td>
+                <a href="">Home</a>
+                <a href="">About</a>
+                <a href="html-lessons.html" target="iframe_content">HTML</a>
+                <a href="CSS-lessons.html" target="iframe_content">CSS</a>
+                <a href="php-lessons.html" target="iframe_content">PHP</a>
+
+            </td>
+
+        </tr>
+        <tr class="content">
+            <td>
+                <iframe src="" name="iframe_content" style="width:100%;height:100%;"
+                title="content area"></iframe>
+                <!--
+                <table>
+                    <tr>
+                        <td>
+                            Left side bar
+                        </td>
+                        <td>
+                            Right side
+                        </td>
+                    </tr>
+                </table>-->
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
