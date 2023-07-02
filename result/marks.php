@@ -1,18 +1,69 @@
 <?php
-include "students.php";
-include "functions.php";
 
-//var_dump($_GET);
+var_dump($_GET);
 
 $roll_no = $_GET['roll_no'];
 
-//echo "<br> $roll_no";
+echo "<br> $roll_no";
 
 $mark = [];
 
+$marks1 = array("Tamil" => "89", "English" => "90","Maths" => "91" , "Science" => "88" , "Social" => "96" );
+$marks2 = array("Tamil" => "88", "English" => "90","Maths" => "91" , "Science" => "88" , "Social" => "96" );
+$marks3 = array("Tamil" => "87", "English" => "90","Maths" => "91" , "Science" => "88" , "Social" => "96" );
+$marks4 = array("Tamil" => "86", "English" => "90","Maths" => "91" , "Science" => "88" , "Social" => "96" );
+$marks5 = array("Tamil" => "85", "English" => "90","Maths" => "91" , "Science" => "88" , "Social" => "96" );
+$marks6 = array("Tamil" => "84", "English" => "90","Maths" => "91" , "Science" => "88" , "Social" => "96" );
+$marks7 = array("Tamil" => "83", "English" => "90","Maths" => "91" , "Science" => "88" , "Social" => "96" );
+$marks8 = array("Tamil" => "82", "English" => "90","Maths" => "91" , "Science" => "88" , "Social" => "96" );
+$marks9 = array("Tamil" => "81", "English" => "90","Maths" => "91" , "Science" => "88" , "Social" => "96" );
+$marks10 = array("Tamil" => "80", "English" => "90","Maths" => "91" , "Science" => "88" , "Social" => "96" );
+
+$students = array(
+   '1001' => $marks1,
+   '1002' => $marks2,
+   '1003' =>  $marks3,
+   '1004' =>$marks4,
+   '1005' => $marks5,
+   '1006' =>$marks6,
+   '1007' =>$marks7,
+   '1008' =>$marks8,
+   '1009' =>$marks9,
+   '1010' =>$marks10
+);
+/*$names = array(
+    '1001' => "Kumaran",
+    '1002' => "Shravan",
+    '1003' => "Shakthi",
+    '1004' => "Sanjith",
+    '1005' => "Soujith",
+    '1006' => "Naveen",
+    '1007' => "Siddharth",
+    '1008' => "Sanjay",
+    '1009' => "Ashwin",
+    '1010' => "Dhanish",
+);*/
 
 
+function displayMarks($mark,$names/*[$roll_no]*/) {
+    echo "<table>";
+    echo "<tr>";
+    echo "<th>Subject</th>";
+    echo "<th>Marks</th>";
+    echo  "</tr>";
 
+    foreach($mark as $subject  => $value)      
+    { 
+       echo "<tr>";
+       echo "<td>$subject </td>";
+       echo "<td>$value </td>";
+       echo "</tr>"; 
+    } 
+    
+
+    echo "</table>";
+    
+}
 
 //var_dump($names);
 
@@ -85,43 +136,14 @@ if($roll_no == '1001') {
 <?php
 
 $mark = null;
-$name = "";
+
 //Check if the marks exists for given roll no.  If so, assign to marks.
 if(isset($students[$roll_no])){
-    $mark = $students[$roll_no]['marks'];
-    $name =  $students[$roll_no]['name'];
+    $mark = $students[$roll_no];
 }
 
 
 
-?>
-<?php
-$servername="localhost";
-$username="root";
-$password="";
-$dbname="result";
-
-$connection= mysqli_connect($servername,$username,$password,$dbname);
-
-$sql="SELECT * FROM marks Where rollno='$roll_no'";
-echo $sql;
-$result=mysqli_query($connection,$sql);
-if(mysqli_num_rows($result) > 0 ) {
-   $row = mysqli_fetch_assoc($result);
-   var_dump($row);
-   $mark['marks'] = $row; 
-   $mark['name'] = $row['student_name'];
-
-   
-//     $mark = [];
-//    $mark['Tamil'] = $row['tamil'];
-//    $mark['English'] = $row['english'];
-//    $mark['Maths'] = $row['maths'];
-//    $mark['Science'] = $row['science'];
-//    $mark['Social'] = $row['social'];
-
-
-}
 ?>
 <html>
     <head>
@@ -146,9 +168,45 @@ if(mysqli_num_rows($result) > 0 ) {
         <?php 
         } 
         else {
+            
+            // echo "<h2>";
+            echo "<h2> " .   " </h2>";
+            //echo "</h2>";
+            
+                           displayMarks($mark);
+                           
+             
+       /*     
+            ?>
+       
+       
+       <table >
+            <tr>
+                <th> Subject</th>
+                <th>Marks</th>
+            </tr>
           
-           // displayMarks($students[$roll_no]);
-           displayMarks($mark);
+            <?php
+            
+            
+             foreach($mark as $subject => $value)      
+             { 
+               
+                ?>
+
+            <tr>
+                <td><?php echo $subject ?></td>
+                <td><?php echo $value ?></td>
+            </tr>
+
+            <?php 
+            } 
+            
+            ?>
+  
+        </table>
+        <?php  
+    */
     
     }  ?>
         <a href="index.html">back</a>
