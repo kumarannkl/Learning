@@ -1,10 +1,10 @@
 <?php
+ 
+ var_dump($_GET);
 
-var_dump($_GET);
+ $roll_no=$_GET['roll_no'];
 
-$roll_no=$_GET('roll_no');
-
-echo "<br> $roll_no";
+ echo "<br> $roll_no";
 
 $mark=[];
 
@@ -19,80 +19,86 @@ $marks8 = array("Tamil" => "82", "English" => "90","Maths" => "91" , "Science" =
 $marks9 = array("Tamil" => "81", "English" => "90","Maths" => "91" , "Science" => "88" , "Social" => "96" );
 $marks10 = array("Tamil" => "80", "English" => "90","Maths" => "91" , "Science" => "88" , "Social" => "96" );
 
-$students = array(
+$students=array(
     '1001' => $marks1,
     '1002' => $marks2,
-    '1003' =>  $marks3,
-    '1004' =>$marks4,
-    '1005' => $marks5,
-    '1006' =>$marks6,
-    '1007' =>$marks7,
-    '1008' =>$marks8,
-    '1009' =>$marks9,
-    '1010' =>$marks10
- );
+   '1003' => $marks3,
+   '1004' => $marks4,
+   '1005' => $marks5,
+   '1006' => $marks6,
+   '1007' => $marks7,
+   '1008' => $marks8,
+   '1009' => $marks9,
+   '1010' => $marks10
+);
+$names=array(
+    '1001' => 'Kumaran',
+    '1002' => "Shravan",
+    '1003' => "Shakthi",
+    '1004' => "Sanjith",
+    '1005' => "Soujith",
+    '1006' => "Naveen",
+    '1007' => "Siddharth",
+    '1008' => "Sanjay",
+    '1009' => "Ashwin",
+    '1010' => "Dhanish",
+);
 
- //var_dump($students);
+function displayMarks($mark,$names) {
+    echo "<h3> ". $names . "</h3>";
+    echo "<table>";
+    echo "<tr>";
+    echo "<th>Subject</th>";
+    echo "<th>Marks</th>";
+    echo "</tr>";
 
-/*
-if($roll_no == '1001') {
-    $mark = $marks1;
-} elseif($roll_no == '1002') {
-    $mark = $marks2;
-} elseif($roll_no == '1003') {
-    $mark = $marks3;
-} elseif($roll_no == '1004') {
-    $mark = $marks4;
-} elseif($roll_no == '1005') {
-    $mark = $marks5;
-} elseif($roll_no == '1006') {
-    $mark = $marks6;
-} elseif($roll_no == '1007') {
-    $mark = $marks7;
-} elseif($roll_no == '1008') {
-    $mark = $marks8;
-} elseif($roll_no == '1009') {
-    $mark = $marks9;
-} elseif($roll_no == '1010') {
-    $mark = $marks10;
-} else {
-    $mark = [];
+     foreach ($mark as $subject => $value){
+        echo "<tr>";
+        echo "<td>$subject</td>";
+        echo "<td>$value</td>";
+        echo "</tr>";
+     }
+     echo "</table>";
 }
-*/
+?>
+<?php
+$mark = null;
 
-/*switch($roll_no) {
-    case "1001":
-        $mark= $marks1;
-        break;
-    case "1002":
-        $mark= $marks2;
-        break;
-    case "1003":
-        $mark= $marks3;
-        break;
-    case "1004":
-        $mark= $marks4;
-        break;
-    case "1005":
-        $mark= $marks5;
-        break;                    
-    case "1006":
-        $mark= $marks6;
-        break;
-    case "1007":
-        $mark= $marks7;
-        break;
-    case "1008":
-        $mark= $marks8;
-        break;
-    case "1009":
-        $mark= $marks9;
-        break;
-    case "1010":
-        $mark= $marks10;
-        break;
-    default:
-        $mark = [];
-                                                                                                                                                                                    
-}*/
+if(isset($students[$roll_no])) {
+    $mark = $students[$roll_no];
+}
+?>
+<html>
+    <head>
+        <style>
+        table {
+            border:border-collapse;
+            width:500px;
+        }
+        td,th{
+            border: 2px solid black;
+            text-align: left;
+            padding: 6px;
+        }
+         </style>
+         </head>
+         <body>
+            <h1>12th SUBJECTWISE MARKS</h1> 
+            <?php
+            if($mark==null) {?>
+                <h3>Entered roll no does not exist</h3>
+                <?php
+            }
+            else {
+                displayMarks($mark,$names[$roll_no]);
+            }
+            ?>
+            <a href="index1.html">back</a>
+        </body>
+        </html>
+
+      
+
+        
+
 
